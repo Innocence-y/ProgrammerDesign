@@ -1,5 +1,7 @@
 package fenjieyinshu;
 
+import java.util.Scanner;
+
 /**
  * 描述:分解因数
  * 题目：将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5。
@@ -11,5 +13,22 @@ package fenjieyinshu;
  * @create 2018-04-01 10:08
  */
 public class FenJieYinShu {
-
+	public static void main(String[] args) {
+		System.out.println("输入要分解的正整数：");
+		Scanner scanner = new Scanner(System.in);
+		int input = scanner.nextInt();
+		System.out.println(input + "=");
+		for (int i = 2; i < input + 1; i++) {
+			while (input % i == 0 && input != i) {
+				input = input / i;
+				System.out.println(i + "*");
+			}
+			//上面的都不能整除，说明这是一个质数
+			if (input == i) {
+				System.out.println(i);
+				break;
+			}
+		}
+		scanner.close();
+	}
 }
